@@ -1,0 +1,15 @@
+<div class="hero-unit">
+  <h1>WGO</h1>
+  <p>What's going on</p>
+  <form class="form-horizontal">
+      <input type="text" ng-model="q" />
+      <button class="btn" ng-click="getPhotos()"><i class="icon-search"></i>Flicks</button>
+  </form>
+</div>
+<nav>
+    list
+    <ul>
+      <li ng-repeat="photo in photos.photos.photo"><img src="http://farm{{ photo.farm }}.staticflickr.com/{{ photo.server }}/{{ photo.id }}_{{ photo.secret }}_s.jpg" alt="{{ photo.title }}" width="75" height="75">{{ photo.title }}</li>
+    </ul>
+</nav>
+<div id="map"></div>
