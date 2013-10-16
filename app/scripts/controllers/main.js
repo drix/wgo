@@ -24,7 +24,7 @@ angular.module('wgoApp')
 
 
   $scope.addMarks = function(photos){
-    var m, markers = [];
+    var m;//, markers = [];
     angular.forEach(photos.photos.photo, function(photo){
 
       m = new nokia.maps.map.Marker([photo.latitude, photo.longitude], {

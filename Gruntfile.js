@@ -353,6 +353,23 @@ module.exports = function (grunt) {
         dest: '/adrianospadoni.net',
         exclusions: ['<%= yeoman.dist %>/bower_components']
       }
+    },
+    bgShell: {
+      _defaults: {
+        bg: true
+      },
+      commit: {
+        cmd: 'git commit -a',
+        bg: false
+      },
+      push: {
+        cmd: 'git push origin master -u',
+        bg: false
+      },
+      add: {
+        cmd: 'git add .',
+        bg: false
+      }
     }
   });
 
@@ -373,7 +390,12 @@ module.exports = function (grunt) {
 
   grunt.registerTask('deploy', function () {
     grunt.loadNpmTasks('grunt-ftp-deploy');
+    grunt.loadNpmTasks('grunt-bg-shell');
+
     grunt.task.run([
+      'bgShell:add',
+      'bgShell:commit',
+      'bgShell:push',
       'ftp-deploy'
     ]);
   });
