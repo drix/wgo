@@ -394,8 +394,8 @@ module.exports = function (grunt) {
 
     grunt.task.run([
       'bgShell:add',
-      'bgShell:commit',
-      'bgShell:push',
+      /*'bgShell:commit',
+      'bgShell:push',*/
       'ftp-deploy'
     ]);
   });
