@@ -1,15 +1,22 @@
 <div class="hero-unit">
- <img src="/images/wgo.png" alt="WGO" width="120" height="35">
-  <p>What's going on</p>
-  <form class="form-horizontal">
-      <input type="text" ng-model="q" />
-      <button class="btn" ng-click="getPhotos()"><i class="icon-search"></i>Flicks</button>
-  </form>
+	<img src="/images/wgo.png" alt="WGO" width="120" height="35">
+	<form>
+	  	<input type="text" ng-model="q" />
+	    <button class="btn" ng-click="getPhotos()">Search</button>
+  	</form>
 </div>
+<div class="sugestions">
+	<div class="bg"></div>
+  	<ul>
+  		<li ng-repeat="sugestion in sugestions" ng-click="getPhotos(sugestion)">{{ sugestion }}</li>
+  	</ul>
+ </div>
 <nav>
-    list
-    <ul>
-      <li ng-repeat="photo in photos.photos.photo"><img src="http://farm{{ photo.farm }}.staticflickr.com/{{ photo.server }}/{{ photo.id }}_{{ photo.secret }}_s.jpg" alt="{{ photo.title }}" width="75" height="75">{{ photo.title }}</li>
-    </ul>
+	<div class="bg"></div>
+	<ul>
+		<li ng-repeat="photo in photos.photos.photo" >
+			<img ng-click="photoSelected(photo.id)" src="http://farm{{ photo.farm }}.staticflickr.com/{{ photo.server }}/{{ photo.id }}_{{ photo.secret }}_s.jpg" alt="{{ photo.title }}" width="40" height="40">
+		</li>
+	</ul>
 </nav>
 <div id="map"></div>
