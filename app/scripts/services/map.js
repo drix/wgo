@@ -28,6 +28,10 @@ angular.module('wgoApp')
   that.addMarks = function(photos){
     if(map.objects.getLength() > 0){
       map.objects.removeAll(map.objects.asArray());
+      
+      if(angular.isDefined(bubble)){
+        bubble.close();
+      }
     }
     angular.forEach(photos.photos.photo, that.addMark);
   };
@@ -50,12 +54,12 @@ angular.module('wgoApp')
   };
 
   that.addBubble = function(text, coord){
-    bubble = infoBubbles.openBubble('<h3>'+ (text || 'Nice!') +'</h3>', coord || map.center, function(){
-      console.log('closed');
-    });
-    map.update(-1);
+    text = (text || 'Nice!');
+    if(text.length > 50) {
+      text = text.slice(0,51).split(' ').slice(0,-1).join(' ') + '...';
+    }
+    bubble = infoBubbles.openBubble('<h3>'+ text + '</h3>', coord || map.center);
   };
-
   that.getMarkByPhotoID = function(id){
     if(!map.objects.getLength()){
       return null;

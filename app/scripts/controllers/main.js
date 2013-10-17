@@ -9,8 +9,8 @@ angular.module('wgoApp')
   var iUpdateMap, lastcenter;
 
   
+  // INIT MAP
   try {
-    // INIT MAP
     var map = $map.create(document.getElementById('map'));
     
     map.addListener('displayready', function () {
@@ -44,7 +44,7 @@ angular.module('wgoApp')
   }
 
   // FUNCTIOS
-  
+
   $scope.getPhotos = function(text){
     var bbox = map.getViewBounds();
     lastcenter = map.center;

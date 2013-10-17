@@ -3,5 +3,5 @@ dist
 .tmp
 .sass-cache
 .ftppass
-app/bower_components
+vendor
 recources

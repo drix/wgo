@@ -15,7 +15,7 @@
 	<div class="bg"></div>
 	<ul>
 		<li ng-repeat="photo in photos.photos.photo" >
-			<img ng-click="photoSelected(photo.id)" src="http://farm{{ photo.farm }}.staticflickr.com/{{ photo.server }}/{{ photo.id }}_{{ photo.secret }}_s.jpg" alt="{{ photo.title }}" width="40" height="40">
+			<img ng-click="photoSelected(photo.id)" src="{{ photo.url_s }}" alt="{{ photo.title }}" width="40" height="40">
 		</li>
 	</ul>
 </nav>

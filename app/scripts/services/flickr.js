@@ -10,7 +10,7 @@ angular.module('wgoApp')
       per_page:50,
       page:1,
       format:'json',
-      extras:'geo',
+      extras:'geo,url_s',
       has_geo:1,
       media:'photos',
       content_type:'1',

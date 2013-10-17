@@ -1,15 +1,16 @@
 # ![WGO](http://adrianospadoni.net/images/wgo.png)
 
-WGO is a website built by Adriano Spadoni using Yeoman + Angular. You can check it out o the  [live url](http://adrianospadoni.net).
+WGO is a website built by Adriano Spadoni using Yeoman + Angular. You can check it out on the  [live url](http://adrianospadoni.net).
 It consists in a integration between Flickr api and Nokia maps (HERE).
 
 ## Development tools
  
-![ANGULAR](http://adrianospadoni.net/images/angular.png) 
-![ANGULAR](http://adrianospadoni.net/images/jasmine.png)
-![YEOMAN](http://adrianospadoni.net/images/yeoman.png)
-![YEOMAN](http://adrianospadoni.net/images/nodejs.png)
-
+![ANGULAR](http://adrianospadoni.net/images/vendor/angular.png) 
+![ANGULAR](http://adrianospadoni.net/images/vendor/jasmine.png)
+![YEOMAN](http://adrianospadoni.net/images/vendor/compass.png)
+![YEOMAN](http://adrianospadoni.net/images/vendor/yeoman.png)
+![YEOMAN](http://adrianospadoni.net/images/vendor/nodejs.png)
+![YEOMAN](http://adrianospadoni.net/images/vendor/git.png)
 
 
 ## Installing

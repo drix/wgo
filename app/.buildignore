@@ -1,2 +1,3 @@
 *.coffee
 bower_components
+images/vendor
