@@ -7,12 +7,11 @@ angular.module('wgoApp')
 
 
   that.create = function(el, options){
-
     infoBubbles = new nokia.maps.map.component.InfoBubbles();
 
     map = new nokia.maps.map.Display( el, angular.extend({
       // default value setted to Berlin
-      zoomLevel: 14,
+      zoomLevel: 8,
       center: [52.51, 13.4],
       components: [
         infoBubbles,
@@ -22,8 +21,6 @@ angular.module('wgoApp')
     },
     options));
     
-
-    window.mapobj = map;
     return map;
   };
 
@@ -53,8 +50,8 @@ angular.module('wgoApp')
   };
 
   that.addBubble = function(text, coord){
-    bubble = infoBubbles.openBubble('<h3>'+ (text || 'Nice!') +'</h3>', coord || map.center, function () {
-      console.log('A bubble with HTML content was ' + this.getState());
+    bubble = infoBubbles.openBubble('<h3>'+ (text || 'Nice!') +'</h3>', coord || map.center, function(){
+      console.log('closed');
     });
     map.update(-1);
   };

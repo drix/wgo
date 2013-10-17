@@ -1,24 +1,51 @@
 'use strict';
 
 angular.module('wgoApp')
-  .controller('MainCtrl', ['$scope','Flickr', 'Map', '$timeout', '$window', function ($scope, $flickr, $map, $timeout, $window) {
+  .controller('MainCtrl', ['$scope','Flickr', 'Map', '$timeout', function ($scope, $flickr, $map, $timeout) {
 
-  $scope.sugestions = ['pubs','cats','dogs','beach','festival','park','car','bar'];
+  $scope.sugestions = ['pubs','cats','dogs','beach','park','car'];
   $scope.q = 'pubs';
 
-  var map = $map.create(document.getElementById('map'));
   var iUpdateMap, lastcenter;
- /* 
-    var clusterProvider = new nokia.maps.clustering.ClusterProvider(map, {
-      eps: 16,
-      minPts: 1
+
+  
+  try {
+    // INIT MAP
+    var map = $map.create(document.getElementById('map'));
+    
+    map.addListener('displayready', function () {
+      $scope.getPhotos();
+      $map.addBubble('Welcome!');
     });
-*/
-    //clusterProvider.cluster();
+    
+    map.addListener('mapviewchange', function (event) {
+      if (event.data && event.MAPVIEWCHANGE_CENTER && !!lastcenter) {
+        var pos = map.geoToPixel(lastcenter);
 
+        // this code should be replace if jQuery is been used
+        var w = window,
+            d = document,
+            e = d.documentElement,
+            g = d.getElementsByTagName('body')[0],
+            x = w.innerWidth || e.clientWidth || g.clientWidth,
+            y = w.innerHeight|| e.clientHeight|| g.clientHeight;
 
+        // check if the old center is out of the screen
+        if(pos.x < 0 || pos.y < 0 || pos.x > x || pos.y > y){
+          $timeout.cancel(iUpdateMap);
+          iUpdateMap = $timeout($scope.getPhotos, 1000);
+        }
+      }
+      // need add the check for zoon out
+    });
+
+  } catch(er){
+    console.log('Map ot loaded');
+  }
+
+  // FUNCTIOS
+  
   $scope.getPhotos = function(text){
-    console.log('getPhotos');
     var bbox = map.getViewBounds();
     lastcenter = map.center;
 
@@ -48,19 +75,4 @@ angular.module('wgoApp')
     }
   };
 
-  // INIT
-  map.addListener('displayready', function () {
-    $scope.getPhotos();
-    $map.addBubble('Welcome!');
-  });
-  // Use bitwise "&" operator, to check for specific map view property changes:
-  map.addListener('mapviewchange', function (event) {
-    if (event.data && event.MAPVIEWCHANGE_CENTER && !!lastcenter) {
-      var pos = map.geoToPixel(lastcenter);
-      if(pos.x < 0 || pos.y < 0 || pos.x > $window.width() || pos.y > $window.height()){
-        $timeout.cancel(iUpdateMap);
-        iUpdateMap = $timeout($scope.getPhotos, 1000);
-      }
-    }
-  });
 }]);
